@@ -5,8 +5,30 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.skin.SplitPaneSkin.Content?>
 
+   <TabPane xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.beopmmufx.HelloApplication">
 
-<TabPane xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.beopmmufx.HelloApplication">
-   <fx:include source="tab1.fxml"/>
-</TabPane>
+   <tabs>
+      <fx:define>
+         <ToggleGroup fx:id="group"/>
+      </fx:define>
+   <Tab text="보수 계산" >
+      <content>
+<!--      <fx:include source="tab1.fxml"/>-->
+         <VBox spacing="10">
+            <RadioButton text="부동산 등기"  fx:id="RealEstateRegistration" toggleGroup="$group" />
+            <RadioButton text="상업 법인 등기" fx:id="CommercialCorporationRegistration" toggleGroup="$group"/>
+            <RadioButton text="후견 등기" fx:id="GuardianshipRegistration" toggleGroup="$group"/>
+            <RadioButton text="동산, 채권 담보 등기" fx:id="MovableAssetsAndBondCollateral" toggleGroup="$group"/>
+            <RadioButton text="공탁 사건" fx:id="Deposit" toggleGroup="$group"/>
+            <RadioButton text="경매 공매" fx:id="Auction" toggleGroup="$group"/>
+            <RadioButton text="송무 비송 집행" fx:id="LitigationNonLitigationExecution" toggleGroup="$group"/>
+            <RadioButton text="개인파산 및 개인회생" fx:id="PersonalBankruptcyAndPersonalRehabilitation" toggleGroup="$group"/>
+            <RadioButton text="기타 대행업무" fx:id="OtherAgencyWork" toggleGroup="$group"/>
+            <RadioButton text="상담 및 실비 변상" fx:id="Consultation" toggleGroup="$group"/>
+         </VBox>
+      </content>
+   </Tab>
+   </tabs>
+   </TabPane>

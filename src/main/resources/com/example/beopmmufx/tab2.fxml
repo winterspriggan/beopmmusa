@@ -5,27 +5,16 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.beopmmufx.controller.Tab1Controller"
-            prefHeight="400.0" prefWidth="600.0">
-    <TabPane>
-    <Tab text="보수 계산">
-        <content>
-            <VBox spacing="10">
-                <RadioButton text="부동산 등기" fx:id="RealEstateRegistration" />
-                <RadioButton text="상업 법인 등기" fx:id="CommercialCorporationRegistration"/>
-                <RadioButton text="후견 등기" fx:id="GuardianshipRegistration"/>
-                <RadioButton text="동산, 채권 담보 등기" fx:id="MovableAssetsAndBondCollateral"/>
-                <RadioButton text="공탁 사건" fx:id="Deposit"/>
-                <RadioButton text="경매 공매" fx:id="Auction"/>
-                <RadioButton text="송무 비송 집행" fx:id="LitigationNonLitigationExecution"/>
-                <RadioButton text="개인파산 및 개인회생" fx:id="PersonalBankruptcyAndPersonalRehabilitation"/>
-                <RadioButton text="기타 대행업무" fx:id="OtherAgencyWork"/>
-                <RadioButton text="상담 및 실비 변상" fx:id="Consultation"/>
-            </VBox>
-        </content>
-    </Tab>
-</TabPane>
-</AnchorPane>
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+       xmlns:fx="http://javafx.com/fxml">>
+<RadioButton text="부동산 등기" fx:id="RealEstateRegistration" />
+<RadioButton text="상업 법인 등기" fx:id="CommercialCorporationRegistration"/>
+<RadioButton text="후견 등기" fx:id="GuardianshipRegistration"/>
+<RadioButton text="동산, 채권 담보 등기" fx:id="MovableAssetsAndBondCollateral"/>
+<RadioButton text="공탁 사건" fx:id="Deposit"/>
+<RadioButton text="경매 공매" fx:id="Auction"/>
+<RadioButton text="송무 비송 집행" fx:id="LitigationNonLitigationExecution"/>
+<RadioButton text="개인파산 및 개인회생" fx:id="PersonalBankruptcyAndPersonalRehabilitation"/>
+<RadioButton text="기타 대행업무" fx:id="OtherAgencyWork"/>
+<RadioButton text="상담 및 실비 변상" fx:id="Consultation"/>
+</VBox>

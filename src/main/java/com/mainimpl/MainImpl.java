@@ -1,16 +1,10 @@
 package com.mainimpl;
-
 import com.example.request.EventType;
 import com.example.request.Request;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 public class MainImpl {
-
-
-    //
     public MainImpl() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("--Menu--");
@@ -22,8 +16,6 @@ public class MainImpl {
             System.out.println("잘 못 입력하셨습니다.");
         }
     }
-
-
     public static EventType sort(int n) {
         switch (n) {
             case 1 :return EventType.RealEstateRegistration;
@@ -92,7 +84,7 @@ public class MainImpl {
                     break;
             }
             stTax = Double.parseDouble(br.readLine());
-            System.out.println("대한 법무사협회 기준 기본 보수는 " + Request.getB(stTax, i) + " 원 입니다.");
+            System.out.println("대한 법무사협회 기준 기본 보수는 " + Request.getRealEstateRegistration(stTax, i) + " 원 입니다.");
         }
 
 

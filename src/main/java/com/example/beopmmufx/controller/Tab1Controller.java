@@ -1,15 +1,10 @@
 package com.example.beopmmufx.controller;
-
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-
-public class Tab1Controller extends Application {
+public class Tab1Controller {
     @FXML
     private RadioButton RealEstateRegistration;
     @FXML
@@ -30,25 +25,14 @@ public class Tab1Controller extends Application {
     private RadioButton OtherAgencyWork;
     @FXML
     private RadioButton Consultation;
-
-
-
     @FXML
     private TextField textField;
-
-
-
-
     private static ToggleGroup toggleGroup;
     private static void setRadioButton(RadioButton radioButton) {
         radioButton = new RadioButton();
         radioButton.setToggleGroup(toggleGroup);
     }
-
-
-    @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("tab1.fxml"));
         toggleGroup = new ToggleGroup();
         setRadioButton(RealEstateRegistration);
         setRadioButton(CommercialCorporationRegistration);
@@ -60,6 +44,5 @@ public class Tab1Controller extends Application {
         setRadioButton(PersonalBankruptcyAndPersonalRehabilitation);
         setRadioButton(OtherAgencyWork);
         setRadioButton(Consultation);
-
     }
 }
