@@ -1,4 +1,6 @@
 module com.example.beopmmufx {
+    exports com.example.beopmmufx.controller;
+    opens com.example.beopmmufx.controller to javafx.fxml; // 이 줄을 추가합니다.
     requires javafx.controls;
     requires javafx.fxml;
 

@@ -7,6 +7,10 @@ public class Request {
     private String answer;
     private EventType type;
 
+    public Request() {
+
+    }
+
     public String getClientName() {
         return clientName;
     }
@@ -35,33 +39,31 @@ public class Request {
         this.type = type;
     }
 
-    public double getBasicCompensation(EventType type, double stTax) {
+    public static double getBasicCompensation(EventType type, double stTax, int i) {
         switch (type.getTitle()) {
             case "부동산 등기":
-                break;
+               return getRealEstateRegistration(stTax, i);
             case "상업 법인 등기":
-                break;
+                return getCommercialCorporationRegistration(stTax, i);
             case "후견 등기":
-                break;
+                return   getGuardianshipRegistration(stTax , i);
             case "동산, 채권 담보 등기":
-                break;
+                return   getMovableAssetsAndBondCollateral(stTax , i);
             case "공탁 사건":
-                break;
+                return   getDeposit(stTax , i);
             case "경매 공매":
-                break;
+                return   getLitigationNonLitigationExecution(stTax , i);
             case "송무 비송 집행":
-                break;
+                return   getPersonalBankruptcyAndPersonalRehabilitation(stTax , i);
             case "개인파산 및 개인회생":
-                break;
+                return   getPersonalBankruptcyAndPersonalRehabilitation(stTax , i);
             case "기타 대행업무":
-                break;
+                return   getOtherAgencyWork(stTax , i);
             case "상담 및 실비 변상":
-                break;
+                return  getConsultingFee(stTax , i);
             default:
                 return 0;
         }
-        return 0;
-
     }
 
     //부동산 등기 보수
@@ -101,7 +103,7 @@ public class Request {
     }
 
     //상업 법인 등기 보수
-    public static double getCommercialCorporationRegistration(double payment, int i) {
+    private static double getCommercialCorporationRegistration(double payment, int i) {
         switch (i) {
             case 1:
                 if (payment <= 50000000) return 310000.0;
@@ -145,7 +147,7 @@ public class Request {
     }
 
     //후견 등기 보수
-    public static double getGuardianshipRegistration(double money, int i) {
+    private static double getGuardianshipRegistration(double money, int i) {
         switch (i) {
             case 1:
                 return 250000.0;
@@ -158,7 +160,7 @@ public class Request {
 
     // 동산/채권 담보등기 보수
 
-    public static double getMovableAssetsAndBondCollateral(double bondAmount, int i) {
+    private static double getMovableAssetsAndBondCollateral(double bondAmount, int i) {
         switch (i) {
             case 1:
                 if (bondAmount <= 10000000) return 150000; //10만원
@@ -188,7 +190,7 @@ public class Request {
     }
 
     // 공탁사건의 보수
-    public static double getDeposit(double depositValue, int i) {
+    private static double getDeposit(double depositValue, int i) {
         switch (i) {
             case 1:
                 if (depositValue <= 50000000) return 100000.0;
@@ -208,7 +210,7 @@ public class Request {
 
     //경매,공매 사건의 보수 appraisedValue
 
-    public static double getAuction(double appraisedValue, int i) {
+    private static double getAuction(double appraisedValue, int i) {
         switch (i) {
             case 1:
                 if (appraisedValue <= 50000000) return 400000.0;
@@ -227,7 +229,7 @@ public class Request {
     }
 
     // 송무 비송 집행사건의 보수
-    public static double getLitigationNonLitigationExecution(double lawsuitPrice, int i) {
+    private static double getLitigationNonLitigationExecution(double lawsuitPrice, int i) {
         switch (i) {
             case 1:
                 if (lawsuitPrice <= 20000000) return 400000.0;
@@ -252,7 +254,7 @@ public class Request {
 
 
     //개인 파산 및 개인회생 사건의 보수
-    public static double getPersonalBankruptcyAndPersonalRehabilitation(double debtAmount, int i) {
+    private static double getPersonalBankruptcyAndPersonalRehabilitation(double debtAmount, int i) {
         switch (i) {
             case 1:
                 if (debtAmount <= 20000000) return 800000; //10만원
@@ -270,7 +272,7 @@ public class Request {
     }
 
     //기타 대행업무 보수
-    public static double getOtherAgencyWork(double nope, int i) {
+    private static double getOtherAgencyWork(double nope, int i) {
         switch (i) {
             case 1:
             case 2:
@@ -289,9 +291,8 @@ public class Request {
         }
     }
 
-
     //상담 및 실비 변상 보수
-    public static double getConsultingFee(double t, int i) {
+    private static double getConsultingFee(double t, int i) {
         switch (i) {
             case 1:
                 if(t < 30) return 50000;
@@ -300,8 +301,5 @@ public class Request {
             case 3:
             default: return 0;
         }
-
     }
-
-
 }

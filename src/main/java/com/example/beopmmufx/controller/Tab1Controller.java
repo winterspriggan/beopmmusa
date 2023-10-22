@@ -1,10 +1,14 @@
 package com.example.beopmmufx.controller;
+import com.example.request.EventType;
+import com.example.request.Request;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
-public class Tab1Controller {
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Tab1Controller implements Initializable {
     @FXML
     private RadioButton RealEstateRegistration;
     @FXML
@@ -27,22 +31,30 @@ public class Tab1Controller {
     private RadioButton Consultation;
     @FXML
     private TextField textField;
-    private static ToggleGroup toggleGroup;
-    private static void setRadioButton(RadioButton radioButton) {
-        radioButton = new RadioButton();
-        radioButton.setToggleGroup(toggleGroup);
+    @FXML
+    private ToggleGroup group;
+    @FXML
+    private Button button;
+
+    public void onButtonClick() {
+        RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
+        if (selectedRadioButton != null && textField.getText() != null) {
+            String selectedText = selectedRadioButton.getText();
+            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
+
+            if(EventType.RealEstateRegistration.getTitle().trim().equals(selectedText.trim())) {
+                double fee = Request.getBasicCompensation(EventType.RealEstateRegistration, Double.parseDouble(textField.getText()), 1);
+                String st = String.valueOf(fee).replaceAll("\\.0*$", "");
+                dialog.setHeaderText(selectedText+"\n법무사 협회 기준 보수는"+st+"원 입니다.");
+//                dialog.setContentText("법무사 협회 기준 보수는 ");
+            }
+            dialog.show();
+        } else {
+            System.out.println(selectedRadioButton.getText()+" "+ textField.getText());
+        }
     }
-    public void start(Stage primaryStage) throws Exception {
-        toggleGroup = new ToggleGroup();
-        setRadioButton(RealEstateRegistration);
-        setRadioButton(CommercialCorporationRegistration);
-        setRadioButton(GuardianshipRegistration);
-        setRadioButton(MovableAssetsAndBondCollateral);
-        setRadioButton(Deposit);
-        setRadioButton(Auction);
-        setRadioButton(LitigationNonLitigationExecution);
-        setRadioButton(PersonalBankruptcyAndPersonalRehabilitation);
-        setRadioButton(OtherAgencyWork);
-        setRadioButton(Consultation);
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
     }
 }
