@@ -39,8 +39,30 @@ public class Request {
         this.type = type;
     }
 
-    public static double getBasicCompensation(EventType type, double stTax, int i) {
-        switch (type.getTitle()) {
+    public static int getCount(String type) {
+        switch (type) {
+            case "부동산 등기":
+            case "상업 법인 등기":
+                return 4;
+            case "후견 등기":
+            case "공탁 사건":
+            case "개인파산 및 개인회생":
+                return 1;
+            case "동산, 채권 담보 등기":
+                return 3;
+            case "경매 공매":
+            case "송무 비송 집행":
+            case "상담 및 실비 변상":
+                return 2;
+            case "기타 대행업무":
+                return 13;
+            default:
+                return 0;
+        }
+    }
+
+    public static double getBasicCompensation(String type, double stTax, int i) {
+        switch (type) {
             case "부동산 등기":
                return getRealEstateRegistration(stTax, i);
             case "상업 법인 등기":

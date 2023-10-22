@@ -1,10 +1,18 @@
 package com.example.beopmmufx.controller;
-import com.example.request.EventType;
-import com.example.request.Request;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,31 +38,33 @@ public class Tab1Controller implements Initializable {
     @FXML
     private RadioButton Consultation;
     @FXML
-    private TextField textField;
-    @FXML
     private ToggleGroup group;
     @FXML
     private Button button;
+    @FXML
+    private TabPane mainTab;
 
-    public void onButtonClick() {
-        RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
-        if (selectedRadioButton != null && textField.getText() != null) {
+
+    public void onButtonClick() throws  IOException {
+            RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
             String selectedText = selectedRadioButton.getText();
-            Alert dialog = new Alert(Alert.AlertType.CONFIRMATION);
-
-            if(EventType.RealEstateRegistration.getTitle().trim().equals(selectedText.trim())) {
-                double fee = Request.getBasicCompensation(EventType.RealEstateRegistration, Double.parseDouble(textField.getText()), 1);
-                String st = String.valueOf(fee).replaceAll("\\.0*$", "");
-                dialog.setHeaderText(selectedText+"\n법무사 협회 기준 보수는"+st+"원 입니다.");
-//                dialog.setContentText("법무사 협회 기준 보수는 ");
-            }
-            dialog.show();
-        } else {
-            System.out.println(selectedRadioButton.getText()+" "+ textField.getText());
-        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/beopmmufx/dialog.fxml"));
+        Parent parent = loader.load();
+        CompensationDialogController controller = loader.getController();
+        controller.setEventType(selectedText);
+        Stage dialog = new Stage(StageStyle.UTILITY);
+        Stage previousStage = (Stage) mainTab.getScene().getWindow();
+        dialog.initOwner(previousStage);
+        dialog.initModality(Modality.WINDOW_MODAL);
+        dialog.setTitle(selectedText);
+        Scene scene = new Scene(parent);
+        dialog.setScene(scene);
+        dialog.setResizable(false);
+        dialog.show();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
+
 }

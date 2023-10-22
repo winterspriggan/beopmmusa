@@ -1,4 +1,5 @@
 package com.example.beopmmufx;
+import com.example.beopmmufx.controller.Tab1Controller;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +19,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         stage.setTitle("JJY Beommusa Lawyer's System");
-        stage.setScene(new Scene(root, 640, 600));
+        stage.setScene(new Scene(root, 300, 370));
         stage.show();
     }
 
