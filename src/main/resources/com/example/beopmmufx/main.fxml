@@ -8,6 +8,8 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <TabPane fx:id="mainTab" prefHeight="370.0" prefWidth="276.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.beopmmufx.controller.Tab1Controller">
    <tabs>
       <fx:define>
@@ -16,6 +18,12 @@
    <Tab text="보수 계산">
       <content>
          <VBox prefHeight="337.0" prefWidth="260.0" spacing="10">
+            <ImageView fx:id="imageView" fitWidth="50" fitHeight="50">
+               <image>
+<!--                  <Image url="@/법무사마크.png" />-->
+                  <Image url="@/법무사마크.png"/>
+               </image>
+            </ImageView>
             <RadioButton fx:id="RealEstateRegistration" text="부동산 등기">
                   <toggleGroup>
                      <ToggleGroup fx:id="group" />

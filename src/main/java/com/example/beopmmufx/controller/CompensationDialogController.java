@@ -1,23 +1,11 @@
 package com.example.beopmmufx.controller;
 
-import com.example.request.EventType;
-import com.example.request.Request;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,8 +14,6 @@ public class CompensationDialogController implements Initializable {
     @FXML
     private Label title;
     private String eventType;
-    private int count;
-
     private RadioButton[] radioButtons;
     private HBox[] hBoxes;
     private TextField[] textFields;

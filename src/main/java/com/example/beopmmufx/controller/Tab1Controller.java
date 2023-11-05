@@ -2,17 +2,16 @@ package com.example.beopmmufx.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,8 +43,8 @@ public class Tab1Controller implements Initializable {
     @FXML
     private TabPane mainTab;
 
-
     public void onButtonClick() throws  IOException {
+
             RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
             String selectedText = selectedRadioButton.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/beopmmufx/dialog.fxml"));
